@@ -1,18 +1,19 @@
 {
-  "name": "nodebb-plugin-emoji-extended",
+  "name": "nodebb-plugin-emoji-extended-openshift",
   "version": "0.4.1-4",
   "description": "Emoji for NodeBB with emoticon-mapping and text-completion :)\nKnown Conflicts: nodebb-plugin-emoji",
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/frissdiegurke/nodebb-plugin-emoji-extended"
+    "url": "https://github.com/liam-middlebrook/nodebb-plugin-emoji-extended"
   },
   "keywords": [
     "nodebb",
     "emoji",
     "extended",
     "emoticons",
-    "smilies"
+    "smilies",
+    "openshift"
   ],
   "license": "MIT",
   "dependencies": {

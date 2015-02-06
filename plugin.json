@@ -1,5 +1,5 @@
 {
-  "id": "nodebb-plugin-emoji-extended",
+  "id": "nodebb-plugin-emoji-extended-openshift",
   "name": "NodeBB Emoji Extended",
   "description": "Emoji for NodeBB with emoticon-mapping and text-completion :)\nKnown Conflicts: nodebb-plugin-emoji",
   "url": "https://github.com/frissdiegurke/nodebb-plugin-emoji-extended",
