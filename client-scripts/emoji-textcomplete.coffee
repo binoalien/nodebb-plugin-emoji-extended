@@ -15,7 +15,7 @@
       , cb
       null
     updated: false
-    path: "http://nodebb-igmforums.rhcloud.com/plugins/nodebb-plugin-emoji-extended/images/"
+    path: "nodebb-igmforums.rhcloud.com/plugins/nodebb-plugin-emoji-extended/images/"
     getPath: (name) -> if name? then "#{this.path}#{encodeURIComponent name.toLowerCase()}.png" else this.path
     list: []
     ready: $.Deferred()
