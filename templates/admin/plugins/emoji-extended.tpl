@@ -60,7 +60,7 @@
               </div>
               Note: The Feature of custom images isn't implemented (yet).<br />
               By disabling above checkbox you ensure no automatic changes within the
-              <i>node_modules/nodebb-plugin-emoji-extended/emoji/</i> directory.
+              <i>node_modules/nodebb-plugin-emoji-extended-openshift/emoji/</i> directory.
               Therefor you may change the images located there and the !index.list file in order to setup your own
               images.<br />
               This will disable the categorization of emoji within the composer-dialog.</br >
@@ -112,10 +112,10 @@
       }
     }
     var wrapper = $("#emoji-settings");
-    settings.sync('emoji-extended', wrapper, settingsChanged);
+    settings.sync('emoji-extended-openshift', wrapper, settingsChanged);
     $('#save').click(function(event) {
       event.preventDefault();
-      settings.persist('emoji-extended', wrapper, function() {
+      settings.persist('emoji-extended-openshift', wrapper, function() {
         socket.emit('admin.settings.syncEmojiExtended');
         settingsChanged();
       });
@@ -123,7 +123,7 @@
     $('#reset').click(function(event) {
       event.preventDefault();
       socket.emit('admin.settings.getEmojiExtendedDefaults', null, function (err, data) {
-        settings.set('emoji-extended', data, wrapper, function() {
+        settings.set('emoji-extended-openshift', data, wrapper, function() {
           socket.emit('admin.settings.syncEmojiExtended');
           settingsChanged();
         });

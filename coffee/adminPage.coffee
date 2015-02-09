@@ -1,7 +1,7 @@
 constants = Object.freeze
   'name': "Emoji Extended"
   'admin':
-    'route': '/plugins/emoji-extended'
+    'route': '/plugins/emoji-extended-openshift'
     'icon': 'fa-smile-o'
 
 initAdminRoute = (router, middleware) ->

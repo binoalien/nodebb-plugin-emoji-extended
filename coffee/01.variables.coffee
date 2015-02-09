@@ -1,4 +1,4 @@
-emojiPath = nconf.get('url') + '/plugins/nodebb-plugin-emoji-extended/images'
+emojiPath = nconf.get('url') + '/plugins/nodebb-plugin-emoji-extended-openshift/images'
 
 regexObject = (regex) ->
   parts = /^\/(.*)\/([^\/]*)$/.exec regex.toString()
@@ -66,6 +66,6 @@ updateEmoji = ->
     list = emoji.emoji.sort() if !err?
     updating = false
 
-settings = new Settings 'emoji-extended', '0.4.1-4', defaultConfig, null, false, false
+settings = new Settings 'emoji-extended-openshift', '0.4.1-4', defaultConfig, null, false, false
 
 getRoute = (router, url, mw, cb) ->

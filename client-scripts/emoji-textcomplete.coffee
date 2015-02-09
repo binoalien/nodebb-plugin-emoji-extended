@@ -15,20 +15,20 @@
       , cb
       null
     updated: false
-    path: "#{URL}/plugins/nodebb-plugin-emoji-extended/images/" 
+    path: "#{URL}/plugins/nodebb-plugin-emoji-extended-openshift/images/" 
     getPath: (name) -> if name? then "#{this.path}#{encodeURIComponent name.toLowerCase()}.png" else this.path
     list: []
     ready: $.Deferred()
   $(document).ready -> socket.emit 'modules.emojiExtended', null, (err, data) ->
     if err?
-      console.error "Error while initializing emoji-extended."
+      console.error "Error while initializing emoji-extended-openshift."
       console.error err
       return exports.ready.reject err
     defaultUsage = data.settings.fileSystemAccess
     exports.list = data.list
     exports.version = data.version
     exports.updated = true
-    $(window).trigger 'emoji-extended:updated', exports
+    $(window).trigger 'emoji-extended-openshift:updated', exports
     maxCount = data.settings.completion.maxCount
     minChars = data.settings.completion.minChars
     completePrefix = data.settings.completion.prefix
@@ -113,10 +113,10 @@
 
     exports.ready.resolve.call exports, (object, cb) ->
       object = $ object if !(object instanceof $)
-      if object.data 'emoji-extended-added'
+      if object.data 'emoji-extended-openshift-added'
         cb new Error 'Already added' if typeof cb == 'function'
         return
-      object.data 'emoji-extended-added', '1'
+      object.data 'emoji-extended-openshift-added', '1'
       object.textcomplete [
         #  anything before not ending with $completePrefix   : any words/numbers/+/-, count from minChars to any
         match: new RegExp "^((([\\s\\S]*)(#{completePrefix})):[\\w\\d+-]{#{minChars},})$", "i"
@@ -129,7 +129,7 @@
           callback $.grep exports.list, (emoji) -> regexp.test emoji
         replace: (value) -> '$2:' + value.toLowerCase() + ': '
         template: (value) ->
-          "<img class='emoji emoji-extended img-responsive' src='#{exports.getPath value}' /> #{value}"
+          "<img class='emoji emoji-extended-openshift img-responsive' src='#{exports.getPath value}' /> #{value}"
         maxCount: maxCount
         index: 1
       ]
@@ -139,7 +139,7 @@
   $(window).on 'action:composer.loaded', (ignored, data) ->
     exports.addCompletion $ "#cmp-uuid-#{data.post_uuid} .write"
   $(window).on 'action:chat.loaded', (ignored, modal) -> exports.addCompletion $ "#chat-message-input", modal
-  $(window).trigger 'emoji-extended:initialized', exports
+  $(window).trigger 'emoji-extended-openshift:initialized', exports
 
   exports.ready.then ->
     lists = if defaultUsage then defaultLists else smileys: exports.list
@@ -147,7 +147,7 @@
       composer.addButton 'fa fa-smile-o', (area, sS, sE) ->
         getLink = (value) ->
           link = $ "<a class='emoji-link' title='#{value}'></a>"
-          link.html "<img class='emoji emoji-extended img-responsive' src='#{exports.getPath value}' />&nbsp;:#{value}:"
+          link.html "<img class='emoji emoji-extended-openshift img-responsive' src='#{exports.getPath value}' />&nbsp;:#{value}:"
           link.click ->
             dialog.modal 'hide'
             controls.updateTextareaSelection area, sE, sE
